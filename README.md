@@ -12,7 +12,9 @@ Analyzing pizza dataset find insight for business
    817860.05	
 
 CODE:
-SELECT sum(total_price) as total_revenue FROM `angular-geode-401511.123.pizza sales` ;					
+SELECT sum(total_price) as total_revenue FROM `angular-geode-401511.123.pizza sales` ;	
+![Screenshot (51)](https://github.com/AshrafXAsif/Project/assets/141871788/b8b38948-5305-4b1a-813c-173b2e7c0863)
+
 
 2- Avarge Order Value ?
 
@@ -185,7 +187,9 @@ order by total_price desc;
 SELECT pizza_name, round(sum(total_price),2) as total_revenue from `angular-geode-401511.123.pizza sales`	
 group by pizza_name	
 order by total_revenue desc	
-limit 5;	
+limit 7;
+![image](https://github.com/AshrafXAsif/Project/assets/141871788/a42fd751-e889-43eb-8641-93ad7c8bcd28)
+
 
 
 10 - Below Top 5 ?	
@@ -399,6 +403,8 @@ group by pizza_size ;
 
 
 8- Pizza Category Wise Sales ?
+![Screenshot (53)](https://github.com/AshrafXAsif/Project/assets/141871788/457fac19-716e-4f88-9d94-0f9ae976f5ae)
+
 #Resut Below		
 			
 			
