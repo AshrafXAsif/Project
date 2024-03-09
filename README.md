@@ -250,6 +250,9 @@ Row	pizza_name	total_order
 3	The Pepperoni Pizza	2278
 4	The Barbecue Chicken Pizza	2273
 5	The Thai Chicken Pizza	2225
+![Screenshot (50)](https://github.com/AshrafXAsif/Project/assets/141871788/07ef8507-53ca-4fae-a43e-12407f3bb069)
+
+![Screenshot (49)](https://github.com/AshrafXAsif/Project/assets/141871788/769cc7d1-2d44-488d-b5d3-085712853b98)
 
 15- top 5 below pizza order	?		
 			
@@ -532,7 +535,5 @@ Row	pizza_name	total_order
 4	The Spinach Supreme Pizza	918	
 5	The Chicken Pesto Pizza	938	
 
-![Screenshot (50)](https://github.com/AshrafXAsif/Project/assets/141871788/07ef8507-53ca-4fae-a43e-12407f3bb069)
 
-![Screenshot (49)](https://github.com/AshrafXAsif/Project/assets/141871788/769cc7d1-2d44-488d-b5d3-085712853b98)
 
