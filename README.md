@@ -2,13 +2,13 @@
 PIZZA DATA -ANALYST
 
 Analyzing pizza dataset find insight for business  
-## using big query (sql) for this project  
+## using big query (sql),Excel ,Tableau for this project
 
                                          KPI
 
 1- This Fisrt Qustion We are looking for total revenue ?
 
-## total_revenue	
+ total_revenue	
    817860.05	
 
 CODE:
@@ -18,29 +18,28 @@ SELECT sum(total_price) as total_revenue FROM `angular-geode-401511.123.pizza sa
 
 2- Avarge Order Value ?
 
-   ## avg_order_value						
+   avg_order_value						
    38.3072623	
    
 CODE:
 SELECT sum(total_price)/count(distinct order_id) as avg_order_value FROM `angular-geode-401511.123.pizza sales` ;						
 				
 3- Total Pizza Sales ?
-
-## total_pizza_sales						
+ total_pizza_sales						
 49574		
 
 CODE:
 SELECT sum(quantity) as total_pizza_sales FROM `angular-geode-401511.123.pizza sales` ;						
 
 4- Total Order ?
-## total_oder						
+ total_oder						
    21350		
 
 CODE:
 SELECT count(distinct order_id) as total_oder FROM `angular-geode-401511.123.pizza sales` ;						
 
 5- Avarage Pizza Sold Per Order
-## avag_pizza_sold_perOrder								
+avag_pizza_sold_perOrder								
   2.321967213		
 
 CODE:
