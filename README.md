@@ -136,6 +136,7 @@ group by pizza_size ;
 
 
 8- Pizza Category Wise Sales ?
+![Screenshot (53)](https://github.com/AshrafXAsif/Project/assets/141871788/457fac19-716e-4f88-9d94-0f9ae976f5ae)
 #Resut Below		
 			
 			
@@ -402,7 +403,7 @@ group by pizza_size ;
 
 
 8- Pizza Category Wise Sales ?
-![Screenshot (53)](https://github.com/AshrafXAsif/Project/assets/141871788/457fac19-716e-4f88-9d94-0f9ae976f5ae)
+
 
 #Resut Below		
 			
