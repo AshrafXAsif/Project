@@ -1,9 +1,10 @@
 In this project  work with stroke_dataset from kaggle using R and excel.
 
 
-## Load dataset
-strokedata <-read.csv("C:/Users/hp/Downloads/stroke-prediction/healthcare-dataset-stroke-data.csv")
+## Load dataset  strokedata <-read.csv("C:/Users/hp/Downloads/stroke-prediction/healthcare-dataset-stroke-data.csv")
+## how dataset looklike excel  strokedata <-read.csv("C:/Users/hp/Downloads/stroke-prediction/healthcare-dataset-stroke-data.csv")
 ## change table name
+
 names(strokedata)<-c("id","gender","age","hypertension","heart_disease",
                      "ever_married","work_type","residence_type","avg_glucose_level","bmi","somoking_status","stroke")
 ## check data structure
@@ -74,6 +75,7 @@ strokeF<-strokedata[order(-strokedata$age) , ]
         
         ggplot()+
           geom_histogram(data=strokedata,aes(x=age))
+      ## stroke by age  
         
         strokedata$age<- cut(strokedata$age, breaks = c(0,25,50,75,Inf),labels = c("child","young","middel_age","Old")
         
