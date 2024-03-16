@@ -1,1 +1,229 @@
-In this project i work with stroke_dataset from kaggle using R and excel.
+In this project  work with stroke_dataset from kaggle using R and excel.
+
+
+## Load dataset
+strokedata <-read.csv("C:/Users/hp/Downloads/stroke-prediction/healthcare-dataset-stroke-data.csv")
+## change table name
+names(strokedata)<-c("id","gender","age","hypertension","heart_disease",
+                     "ever_married","work_type","residence_type","avg_glucose_level","bmi","somoking_status","stroke")
+## check data structure
+str(strokedata)
+strokedata$id<-(NULL)
+## identfiy row without missing data 
+strokedata<-strokedata[complete.cases(strokedata),]
+
+## check top some row
+head(strokedata)
+## view full table
+View(strokedata)
+
+strokeF<-strokedata[strokedata$gender=="Female",]
+strokeF<-strokedata[strokedata$age >50,]
+##view table
+## Filter Data
+View(strokeF)
+## variable form (3,5,8,11,12)
+strokeF<-strokedata[strokedata$age >50,c(3,5,8,11,12)]
+#variable form 12 to 11
+strokeF<-strokedata[strokedata$stroke >1,c(11,12)]
+## variable form (3,5,8,11,12)
+strokeF<-strokedata[strokedata$Residence_type >"urban",c(2:12)]
+View(strokeF)
+#using (&) for return two variable
+strokeF<-strokedata[strokedata$gender=="Female" & strokedata$age>50,c(2:11)]
+
+## create subset ##
+strokeF<-strokedata[strokedata$gender=="Female" & strokedata$age > 60,c(2:10)]
+strokeF <- strokedata[strokedata$gender == "Female" & strokedata$ever_married == 
+                        "No" &  strokedata$age > 35 & strokedata$stroke == 0,c(1:4)  ]
+
+View(strokeF)
+
+## sortig data ##
+
+strokeF<-strokedata[order(strokedata$age),c(2:6)]
+
+##  descending order##
+
+strokeF<-strokedata[order(-strokedata$age) ,]
+       strokeF <- strokeF[strokeF$gender == "Female",c(2:6)]
+
+strokeF<-strokedata[order(-strokedata$age) , ]
+                   strokeF <- strokeF[strokeF$gender == "Male", c(2:6)]
+
+ ## statistical analyst ##
+        mean(strokedata$avg_glucose_level)
+        min(strokedata$bmi)
+        max(strokedata$age)
+        median(strokedata$age)  #avarage value of data
+        range(strokedata$age)  #range used for find value start to finish
+        mean(strokedata$age)  #middle value of data set
+        sd(strokedata$age)   # standerd devision meaning # understand how data points deviate from the average. 
+        var(strokedata$age) # Variance measures how far each number in a data set is from the mean (average)
+        mad(strokedata$age)# median absoulte devision
+        quantile(strokedata$age) # quantile identfiy individule data point
+        IQR(strokedata$age)
+        61-25
+
+        ## Package ##
+        install.packages("ggplot2")
+        library(ggplot2)
+        library(dplyr)
+        
+        ## histogram ##
+        
+        ggplot()+
+          geom_histogram(data=strokedata,aes(x=age))
+        
+        strokedata$age<- cut(strokedata$age, breaks = c(0,25,50,75,Inf),labels = c("child","young","middel_age","Old")
+        
+       
+       ggplot(strokedata, aes(x = age, fill = age)) +
+         geom_histogram(binwidth = 5, color = "white") +
+         scale_fill_manual(values = c("child" = "blue","young"="red", "middle-aged" = "green", "old" = "black")) +
+         labs(title = "Stroke Data: Age Distribution", x = "Age", y = "Frequency")
+                             
+                             
+                      ###   code explain    Data Preparation: ###
+       You are assuming that you have a data frame called strokedata with an age column.
+       The age column likely contains numerical values representing the ages of individuals.
+       ## Creating a Histogram:
+       ggplot(strokedata, aes(x = age, fill = age))  #This sets up the base plot using ggplot2. You specify that the x-axis represents the age variable, and the bars should be filled based on the same variable.
+       geom_histogram(binwidth = 5, color = "yellow")
+       # This adds a histogram layer to the plot. The binwidth specifies the width of each bin (interval) on the x-axis. The bars will be colored yellow.
+       The histogram shows the distribution of ages in your dataset.
+       ##Customizing Fill Colors:
+         scale_fill_manual(values = c("child" = "green", "young" = "blue", "middle_age" = "purple", "Old" = "black")): This line customizes the fill colors of the bars based on the age groups.
+       ##The specified colors are:
+         “child”: green
+       “young”: blue
+       “middle_age”: purple
+       “Old”: black
+       Adding Titles and Labels:
+         labs(title = "stroke data: age distribution", x = "age", y = "frequency"): This sets the title for the plot and labels for the x-axis and y-axis.   ##      
+         
+      ## histogram plot find gender stroke 
+       ggplot(strokedata,aes(x= age,fill= blue))+
+         geom_histogram(fill="green",color= "white", bin=20,binwidth =5)+
+         labs(title = "stroke data : age distributions",
+              x = "age", y= "frequncy")+
+         facet_grid(~Residence_type)
+   
+       
+       ggplot(strokedata,aes(x= age,fill= blue))+
+         geom_histogram(fill="green",color= "white", bin=20,binwidth =5)+
+         labs(title = "stroke data : age distributions",
+              x = "age", y= "frequncy")+
+         facet_grid(~work_type)
+       
+       ggplot()+
+         geom_histogram(data = strokedata,aes(x= age),fill= "green", color="white",
+                        bins = 30, binwidth = 5)+
+         facet_grid(~age)
+                    
+       
+       ## age hist
+       ggplot(strokedata,aes(x= age,fill= blue))+
+         geom_histogram(fill="green",color= "white",binwidth =5)+
+         labs(title = "stroke data : age distributions",
+              x = "age", y= "frequncy")+
+         facet_grid(age)
+       
+       
+       ggplot()+
+         geom_histogram(data = strokedata,aes(x= age ,fill= gender, color="white",
+                        bins = 30, binwidth = 100) facet_grid(~age) 
+                        
+       ggplot(strokedata, aes(x = age, fill = blue)) +
+         geom_histogram(fill = "green", color = "white", binwidth = 5) +
+         labs(title = "Stroke Data: Age Distributions",
+              x = "Age", y = "Frequency")
+       
+       ## stalked histogram
+       ggplot(strokedata, aes(x = age, fill = gender)) +
+         geom_histogram(fill = "green", color = "white", binwidth = 5) +
+         labs(title = "Stroke Data: Age Distributions",
+              x = "Age", y = "Frequency")
+       
+       ## creat bar chart gender vs age
+       ggplot(strokedata,aes(x= age, y= gender, fill= age))+
+         stat_summary(fun= mean,geom ,"bar")
+       
+       ## bar chart stoke by work
+       ggplot(strokedata, aes(x = age, y = gender, fill = gender)) +
+         stat_summary(fun = mean, geom = "bar") +
+         labs(title = "Stroke Data: Gender",
+              x = "gender", y = "Mean Gender Value")
+       
+       ## stroke by gender
+       ggplot(strokedata, aes(x = bmi, y = age
+                              , fill = bmi)) +
+         stat_summary(fun = mean, geom_point = "Scatter Plot") +
+         labs(title = "Stroke Data: Gender type",
+              x = "Age", y = "Mean Gender Value")
+  
+     ## histogram age an and bmi
+    
+       ggplot(strokedata, aes(x = age, fill = age)) +
+         geom_histogram(fill = "green", color = "white", binwidth = 5) +
+         labs(title = "Stroke Data: Age Distributions",
+              x = "Age", y = "Frequency")
+  
+       ## clusterd bar chart 
+       
+       ggplot(strokedata,aes(x=age, fill= gender))+
+         stat_summary(fun="mean",geom = "bar",
+                      position =position_dodge())
+       
+                      ggplot(strokedata, aes(x=age, fill=Residence_area)) +
+                        stat_summary(fun="mean", geom="bar", position=position_dodge()
+                      
+     ggplot(strokedata, aes(x = Residence_type, y = smoking_status,z= bmi ,bin =5)) +
+              stat_summary(fun = mean, geom = "bar", position = position_dodge())
+                      
+                      
+         ## boxplot glucose_level for stroke person      
+     
+     ggplot()+
+       geom_boxplot(data= strokedata,aes (x=gender ,y = avg_glucose_level),outliers.colours=("green") )+
+                        scale_x_discrete(labels= c("Female","Male"))
+       
+        ## stoke by residency area male female 
+     ggplot(strokedata, aes(x=gender, y=age, color=Residence_type)) +
+       geom_point() +
+       scale_color_brewer(palette="Dark2")  ##  scale_color_brewer(palette="Dark2") ## This changes the default color scale to use the “Dark2” palette 
+                                           ##from the ColorBrewer set of palettes. This means that the points will be colored based on the Residence_type variable, with colors chosen from the “Dark2” palette.
+     
+     ## stoke age by gender
+   ## this plot combine box and violin plot ##
+     ggplot(data= strokedata,aes(age,gender))+geom_boxplot(color="green")+
+                        geom_violin(color="blue")
+     
+     ##this phttp://127.0.0.1:27711/graphics/0d765aa7-9b1f-46ad-a106-3ce4965619d3.pnglot only violin plot
+     ggplot(data= strokedata,aes(age,gender))+
+       geom_violin(color="blue")
+     
+     ## density plot ##
+     
+     library(ggplot2)
+     
+     ggplot(strokedata, aes(x=age)) +
+       geom_density(strokedata$age,lwd=3, color="green")
+     
+     ## create cross bar
+     
+     install.packages("descr")
+     library(descr)
+     
+     CrossTable(strokedata$heart_disease,strokedata$work_type)
+     
+     CrossTable(strokedata$stroke,strokedata$heart_disease,prop.t=FALSE,prop.c = FALSE,prop.chisq = FALSE)
+     
+     ## scaterplot check glucose level by age ##
+     
+     plot(x= strokedata$age, y= strokedata$avg_glucose_level ,type = "p", col= "blue")
+     
+
+     # Create the scatter plot check bmi by age ##
+     plot(x= strokedata$age, y= strokedata$bmi, type = "c", col= "blue")
+     
