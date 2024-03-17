@@ -1,9 +1,8 @@
 # Project1 
-# project2_R
 PIZZA DATA -ANALYST
 
 Analyzing pizza dataset find insight for business  
-## using big query (sql),Excel ,Tableau for this project
+## Using big query (sql),Excel ,Tableau for this project
 
                                          KPI
 
